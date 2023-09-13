@@ -1,0 +1,924 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    border: 0px transparent;
+    outline: 0px transparent;
+    text-decoration: none;
+    list-style: none;
+}
+
+/* ======= Custom Css, Font variables, Color variables, Custom Classes Start Here ======= */
+    @font-face {
+        font-family: "Montserrat";
+        src: url('/Assests/Font/Montserrat/static/Montserrat-Regular.ttf');
+    }
+    @font-face {
+        font-family: "Playfair_Display";
+        src: url('/Assests/Font/Playfair_Display/static/PlayfairDisplay-Regular.ttf');
+    }
+    @font-face {
+        font-family: "Roboto";
+        src: url('/Assests/Font/Roboto/Roboto-Regular.ttf');
+    }
+    @font-face {
+        font-family: "NotoSansJP";
+        src: url('/Assests/Font/Noto_Sans_JP/static/NotoSansJP-Regular.ttf');
+    }
+
+    :root {
+        --heading_color: #303d43;
+        --btn: #363b3d;
+        --border: #e3e5e9;
+        --section-bg: #fdf9f8;
+        --hover-theme: #e3807d;
+        --slider-unactive: #efc2c1;
+        --btn_hover-bg: #f5aa93;
+        --post_details_color: #888888;
+        --content_color: #878787;
+        --blog_card-img: #989898;
+        --Testimonial-img: #aaaaaa;
+        --Search_bg: #f2f2f2;
+        --white: #ffffff;
+        --black: #000000;
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--heading_color);
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--hover-theme);
+    }
+
+    
+
+    html,
+    body {
+        scroll-behavior: smooth;
+    }
+
+    .container {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .section_Specing {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-weight: 400;
+        display: inline-block;
+        font-family: "Montserrat";
+        text-transform: uppercase;
+    }
+
+    .btn-Primary {
+        color: var(--white);
+        background-color: var(--btn);
+    }
+    .btn-Primary:hover {
+        background-color: var(--btn_hover-bg);
+    }
+
+    .btn_Secoundry {
+        background-color: var(--btn_hover-bg);
+    }
+    .btn_Secoundry:hover {
+        color: var(--white);
+        background-color: var(--btn);
+    }
+
+/* ======= Custom Css, Font variables, Color variables, Custom Classes End Here ======= */
+
+/* ===== Header & Hero Section ===== */
+    header {
+        position: relative;
+        min-height: 100svh;
+        overflow: hidden;
+    }
+    nav {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .Top-Logo{
+        width: 85px;
+    }
+    .Sidebar {
+        width: 100vw; height: 100vh;
+        display: flex; align-items: center; justify-content: center;
+        flex-direction: column;
+        position: absolute; top: 0; left: -100%;
+        transition: left 0.5s;
+        z-index: 999;
+        background-color: var(--white);
+    }
+    .navigation-link {
+        font-size: 24px;
+        font-family: "NotoSansJP";
+        font-weight: 700;
+        color: var(--black);
+    }
+    .navigation-link:hover {
+        color: var(--hover-theme);
+    }
+    .activeSearch {
+        left: 0;
+    }
+    .Sidebar .fa-xmark {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+    }
+    .Sidebar_Social-media {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 35px;
+        margin-top: 30px;
+    }
+    .social_media_link {
+        font-size: 16px;
+        color: var(--white);
+        width: 35px;
+        height: 35px;
+        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: var(--black);
+    }
+    .social_media_link:hover {
+        color: var(--hover-theme);
+    }
+    .Search-box {
+        width: 100vw;
+        height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: -100%;
+        left: 0;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+        background-color: var(--white);
+        transition: top 0.4s;
+        z-index: 999;
+    }
+    .activeSearch {
+        top: 0;
+    }
+    .Search-box .fa-xmark {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+    }
+    .searchInput {
+        font-size: 14px;
+        font-family: "NotoSansJP";
+        font-weight: 500;
+        padding: 10px;
+        border-radius: 25px;
+
+        background-color: var(--Search_bg);
+    }
+    .searchInput::placeholder {
+        font-size: 14px;
+    }
+    .Desktop-social-media {
+        display: none;
+    }
+    .Desktop-Search {
+        display: none;
+    }
+    .Desktop-Navigation {
+        display: none;
+    }
+    .Hero_Section-Slider .slick-slide {
+        height: calc(100vh - 67px);
+        background-image: url('/Assests/Images/Hero-Slider.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        display: flex; align-items: end; justify-content: center;
+        padding: 0px 15px 35px  15px;
+    }
+    .Hero_Slider-Content {
+        font-size: 20px;
+        font-weight: 900;
+        font-family: "NotoSansJP";
+        color: var(--white);
+        text-align: center;
+    }
+/* ===== Header & Hero Section ===== */
+
+/* ===== About US ===== */
+    .About_us {
+        position: relative;
+    }    
+    .Scroll_to_Down {
+        font-size: 24px;
+        width: 50px; height: 50px;
+        border-radius: 50%;
+        transition: all 0.5s;
+        position: absolute; top: -20px; left: 50%;
+        transform: translateX(-50%);
+        display: flex; align-items: center; justify-content: center;
+        color: var(--white);
+        background-color: var(--black);
+    }
+    .About-title {
+        font-size: 24px;
+        font-weight: 900;
+        font-family: "NotoSansJP";
+        text-align: center;
+    }
+    .About_Content-Wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 25px;
+    }
+    .About-Card {
+        text-align: center;
+    }
+    .About-img {
+        width: 50%;
+        height: auto;
+    }
+    .About_Content {
+        font-size: 14px;
+        line-height: 24px;
+        font-family: "NotoSansJP";
+    }
+/* ===== About US ===== */
+
+/* ===== Secound Slider ===== */
+    .Card_Slider .Card{
+        width: 100%; 
+        background-image: url('/Assests/Images/Secound_slider-1.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        padding: 30px;
+        border-radius: 50px;
+        display: flex; 
+        flex-direction: column;
+        align-items: end;
+        gap: 30px;
+    }
+   
+    .Card_Slider_Content{
+        font-size: 16px;
+        font-family: "NotoSansJP";
+        color: var(--white);
+    }
+    .Play-btn{
+        width: 50px; height: 50px;
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        display: inline-block;
+        color: var(--black);
+        background-color: var(--white);
+        display: flex; align-items: center; justify-content: center;
+    }
+    .Play-btn:hover{
+        color: var(--hover-theme);
+    }
+/* ===== Secound Slider ====== */
+
+/* ===== Latest Blog ===== */
+    .Seaction_Header {
+        text-align: center;
+        margin-bottom: 35px;
+    }
+    .Section_Title {
+        font-size: 28px;
+        font-family: "Playfair_Display";
+        font-weight: 400;
+        color: var(--heading_color);
+        text-transform: capitalize;
+    }
+    .Section_Content {
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: 500;
+        font-family: "Montserrat";
+        color: var(--content_color);
+        margin-top: 10px;
+    }
+    .Blog_Card-Wrapper {
+        display: flex;
+        flex-direction: column;
+        row-gap: 35px;
+    }
+    .Blog_Card {
+        text-align: center;
+        background-color: var(--white);
+        border: 1px solid var(--border);
+        padding: 15px 15px 30px 15px;
+    }
+    .Blog_img {
+        width: 100%;
+        height: 240px;
+        margin: 0 auto;
+        background-color: var(--blog_card-img);
+    }
+    .Blog-post {
+        font-size: 12px;
+        font-family: "Montserrat";
+        font-weight: 500;
+        text-transform: uppercase;
+        color: var(--post_details_color);
+        margin: 25px 0px 0px 0px;
+    }
+    .Blog_date {
+        font-weight: 600;
+    }
+    .divider {
+        width: 1.5px;
+        height: 10px;
+        margin: 0 7px;
+        display: inline-block;
+        background-color: var(--content_color);
+    }
+    .Blog_Title {
+        font-size: 22px;
+        font-weight: 700;
+        font-family: "Playfair_Display";
+        color: var(--btn);
+        margin: 15px 0px 20px 0px;
+    }
+    .Blog_Content {
+        font-size: 14px;
+        line-height: 21px;
+        font-weight: 300;
+        font-family: "Montserrat";
+        color: var(--content_color);
+        margin-bottom: 25px;
+    }
+    .Blog_Card:hover {
+        border: 1px solid transparent;
+        filter: drop-shadow(11.98px 9.027px 20px rgba(14, 18, 52, 0.1));
+    }
+/* ===== Latest Blog ===== */
+
+/* ===== Testimonial Slider ===== */
+    .Testimonial {
+        background-color: var(--section-bg);
+        text-align: center;
+        overflow: hidden;
+    }
+    .Testimonial-Slide img {
+        width: 10%;
+        margin: 0 auto;
+    }
+    .Testimonial_content {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        font-family: "Playfair_Display";
+        color: var(--heading_color);
+        margin: 25px auto 35px auto;
+    }
+    .Testimonial_Img {
+        width: 60px;
+        height: 60px;
+        background-color: var(--Testimonial-img);
+        border-radius: 50%;
+        margin: 0 auto;
+    }
+    .Testimonial-Owner {
+        font-size: 16px;
+        text-transform: capitalize;
+        font-style: italic;
+        font-family: "Playfair_Display";
+        margin: 20px 0px 30px 0px;
+    }
+    .Testimonial-Owner-Post {
+        font-weight: 300;
+        font-style: normal;
+    }
+    .Testimonial .slick-dots li.slick-active button:before {
+        opacity: .75;
+        color: var(--hover-theme);
+    }
+    .Testimonial .slick-dots li button:before {
+        color: var(--btn_hover-bg);
+    }
+/* ===== Testimonial Slider ===== */
+
+/* ===== Contact Section ===== */
+    .Contact_Wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+    }
+    .Info-div {
+        display: flex;
+        align-items: center;
+        column-gap: 30px;
+    }
+    .Info-div:nth-child(1),
+    .Info-div:nth-child(2) {
+        margin-bottom: 25px;
+    }
+    .Info-div:nth-child(2) .Info-link a:nth-child(1),
+    .Info-div:nth-child(3) .Info-link a:nth-child(1) {
+        margin-bottom: 10px;
+    }
+    .Round {
+        min-width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: inline-block;
+        background-color: var(--btn_hover-bg);
+    }
+    .Info-link a {
+        font-size: 14px;
+        font-weight: 400;
+        font-family: "Montserrat";
+        color: var(--post_details_color);
+        text-transform: uppercase;
+        display: block;
+    }
+    .Info-link a:hover {
+        color: var(--hover-theme);
+    }
+    .Contact-Form input,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 25px;
+        font-family: "Montserrat";
+        text-transform: uppercase;
+        color: var(--blog_card-img);
+        border: 1px solid var(--border);
+    }
+/* ===== Contact Section ===== */
+
+/* ===== Footer ===== */
+    footer{
+        background-color: var(--section-bg);
+        text-align: center;
+    }
+    .Footer-logo{
+        width: 150px;
+    }
+    .Footer-link,
+    .Footer_Social-link{
+        margin-top: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 30px;
+        row-gap: 15px;
+        align-items: center; justify-content: center;
+    }
+    .Footer-link a{
+        font-size: 18px;
+        font-weight: 900;
+        font-family: "Playfair_Display";
+        text-transform: uppercase;
+        color: var(--heading_color);
+        display: inline-block;
+    }
+    .Footer_Social-link a{
+        position: relative;
+    }
+    .Footer_Social-link li:nth-child(1),
+    .Footer_Social-link li:nth-child(2),
+    .Footer_Social-link li:nth-child(3){
+        padding-right: 20px;
+        border-right: 1px solid var(--heading_color);
+        line-height: 10px;
+    }
+   
+    .Footer_Social-link a{
+        color: var(--heading_color);
+    }
+    .Footer-link a:hover,
+    .Footer_Social-link a:hover{
+        color: var(--hover-theme);
+    }
+    .Copywrite{
+        font-size: 14px;
+        line-height: 21px;
+        font-family: "Roboto";
+        margin-top: 25px;
+    }
+    .themeSpan{
+        color: var(--hover-theme);
+    }
+/* ===== Footer ===== */
+
+
+
+/* ========================================= Media Quires Start Here ============================================= */
+@media screen and (min-width: 576px) {
+    .container {
+        max-width: 540px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* ===== Hero Section ===== */
+        .Hero_Slider-Content {
+            font-size: 28px;
+        }
+    /* ===== Hero Section ===== */
+    
+    
+    /* ===== About Us ===== */
+        .About-Card {
+            width: 40%;
+        }
+        .About-title {
+            font-size: 32px;
+        }
+        .About_Content-Wrapper {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 30px;
+        }
+    /* ===== About Us ===== */
+
+    /* ===== Latest Blog ===== */
+        .Blog_Card-Wrapper {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            column-gap: 25px;
+        }
+        .Blog_img {
+            height: 150px;
+        }
+        .Blog_Title {
+            font-size: 18px;
+        }
+        .Blog_Card {
+            width: 47%;
+        }
+    /* ===== Latest Blog ===== */
+
+    /* ===== Contact Section ===== */
+        .Info-div {
+            gap: 15px;
+        }
+        .Information-Wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .Info-div:nth-child(1),
+        .Info-div:nth-child(2) {
+            margin-bottom: 0px;
+        }
+    /* ===== Contact Section ===== */
+
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .section_Specing {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    /* ===== Header ===== */
+        nav {
+            padding-top: 25px;
+            padding-bottom: 0;
+        }
+        .Top-Logo{
+            width: 100px;
+        }
+        .Mobile-sidebar {
+            display: none;
+        }
+        .Mobile_Seacrh-Box {
+            display: none;
+        }
+        .Desktop-social-media {
+            display: flex;
+            margin-top: 0;
+            column-gap: 25px;
+        }
+        .social_media_link {
+            font-size: 18px;
+            width: 30px;
+            height: 30px;
+        }
+        .Desktop-Search {
+            display: block;
+        }
+        .Desktop-Navigation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            column-gap: 35px;
+        }
+        .Desktop-Navigation a{
+            font-size: 20px;
+        }
+        .Hero_Section-Slider .slick-slide {
+            height: calc(100vh - 120px);
+        }
+    /* ===== Header ===== */
+
+    /* ===== About Us ===== */
+        .About-Card {
+            width: auto;
+        }
+        .About-title {
+            font-size: 38px;
+        }
+        .About_Content-Wrapper {
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 40px;
+        }
+    /* ===== About Us ===== */
+
+    /* ===== Secound Slider ===== */
+        .Card_Slider .Card {
+            width: 100%; 
+            height: 250px;
+            flex-direction: row;
+            justify-content: space-between;   
+                     
+        }
+        .Card_Slider_Content {
+            width: 75%;
+            font-size: 14px;
+            display: inline-block;
+        }
+    /* ===== Secound Slider ===== */
+
+
+    /* ===== Latest  Blog ===== */
+        .Seaction_Header {
+            margin-bottom: 45px;
+        }
+        .Section_Title {
+            font-size: 34px;
+        }
+        .Section_Content {
+            font-size: 16px;
+            line-height: 24px;
+        }
+        .Blog_Card-Wrapper {
+            justify-content: center;
+            gap: 25px;
+        }
+    /* ===== Latest  Blog ===== */
+
+    /* ===== contact Section ===== */
+        .Contact_Wrapper {
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .Info-div {
+            gap: 30px;
+        }
+        .Information-Wrapper {
+            width: 70%;
+            flex-direction: column;
+            justify-content: flex-start;
+            row-gap: 15px;
+        }
+    /* ===== contact Section =====*/
+
+    /* ===== Footer Section ===== */
+        .Footer-logo{
+            margin-top: 40px;
+        }
+        .Footer-link,
+        .Footer_Social-link{
+            margin-top: 60px;
+        }
+        .Footer_Social-link a{
+            font-size: 22px;
+        }
+        .Copywrite{
+            margin-top: 40px;
+        }
+    /* ===== Footer Section ===== */
+}
+
+@media screen and (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+    .section_Specing {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    /* ===== Header ===== */
+        .Hero_Section-Slider .slick-slide {
+            height: calc(100vh - 135px);
+        }
+        .Desktop-Navigation a{
+            font-size: 22px;
+        }
+    /* ===== Header ===== */
+
+    /* ===== About us ===== */
+        .About-title {
+            font-size: 46px;
+        }
+        .About_Content-Wrapper {
+            margin-top: 55px;
+        }
+    /* ===== About us ===== */
+
+    /* ===== Latest  Blog ===== */
+        .Section_Title {
+            font-size: 38px;
+        }
+        .Blog_Card-Wrapper {
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            gap: 25px;
+        }
+        .Blog_Card {
+            width: auto;
+        }
+        .Blog_Title {
+            font-size: 22px;
+        }
+    /* ===== Latest  Blog ===== */
+
+    /* ===== Testimonial Slider ===== */
+        .Testimonial-Slide img {
+            width: 7%;
+        }
+    /* ===== Testimonial Slider ===== */
+
+    /* ===== Contact Section ===== */
+        .Contact_Wrapper {
+            gap: 0px;
+        }
+        .Information-Wrapper {
+            width: 30%;
+            flex-wrap: nowrap;
+            flex-direction: column;
+        }
+        .Contact-Form {
+            width: 40%;
+        }
+    /* ===== Contact Section ===== */
+    
+}
+
+@media screen and (min-width: 1024px) {
+    /* ===== Header Section ===== */
+        .Hero_Section-Slider .slick-slide {
+            height: calc(100vh - 125px);
+            background-position: right center;
+        }
+    /* ===== Header Section ===== */
+
+    /* ===== Card Slider ===== */
+        .Card_Slider .Card{
+            margin-right: 40px;
+            height: 350px;
+            padding: 40px;
+        }
+/* ===== Card Slider ===== */
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+
+    .section_Specing {
+        padding-top: 55px;
+        padding-bottom: 55px;
+    }
+    /* ===== Header Section ===== */
+        .Desktop-Navigation a{
+            font-size: 22px;
+        }
+    /* ===== Header Section ===== */
+
+    /* ===== About us ===== */
+        .About-title {
+            font-size: 52px;
+        }
+    /* ===== About us ===== */
+
+    /* ===== Latest Blog ===== */
+        .Seaction_Header {
+            margin-bottom: 55px;
+        }
+        .Blog_img {
+            height: 314px;
+        }
+        .Blog_Content {
+            width: 90%;
+            margin: 0px auto 25px auto;
+        }
+    /* ===== Latest Blog ===== */
+
+    /* ===== Testimonial Slider ===== */
+        .Testimonial-Slide img {
+            width: 5%;
+        }
+    /* ===== Testimonial Slider ===== */
+
+    /* ===== Contact Section ===== */
+        textarea{
+            min-height: 100px;
+        }
+    /* ===== Contact Section ===== */
+
+    /* ===== Footer Section ===== */
+        .Footer-link{
+            column-gap: 50px;
+        }
+    /* ===== Footer Section ===== */
+}
+
+@media screen and (min-width: 1440px) {
+    .container {
+        max-width: 1265px;
+    }
+    .section_Specing {
+        padding-top: 75px;
+        padding-bottom: 80px;
+    }
+
+    /* ===== Header ===== */
+        .Desktop-Navigation {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            column-gap: 55px;
+        }
+        .Hero_Slider-Content {
+            font-size: 42px;
+        }
+    /* ===== Header ===== */
+
+    /* ===== About Us ===== */
+        .About-title {
+            font-size: 42px;
+        }
+        .About_Content-Wrapper {
+            margin-top: 65px;
+        }
+        .About_Content {
+            width: 45%;
+            margin: 0 auto;
+        }
+    /* ===== About us ===== */
+
+    /* ===== Latest  Blog ===== */
+        .Section_Title {
+            font-size: 42px;
+        }
+        .Section_Content {
+            width: 60%;
+            margin: 15px auto 0 auto;
+        }
+    /* ===== Latest  Blog ===== */
+
+    /* ===== Testimonial Slider ====== */
+        .Testimonial_content {
+            font-size: 18px;
+            line-height: 32px;
+            width: 75%;
+        }
+    /* ===== Testimonial Slider ====== */
+
+}
+
+/* ========================================= Media Quires End Here ============================================= */
