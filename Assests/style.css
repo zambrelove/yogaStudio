@@ -275,6 +275,9 @@
 /* ===== About US ===== */
 
 /* ===== Secound Slider ===== */
+    .Card_Slider{
+        overflow: hidden;
+    }
     .Card_Slider .Card{
         width: 100%; 
         background-image: url('/Assests/Images/Secound_slider-1.png');
